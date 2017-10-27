@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Catappus App</title>
+	<script src="https://js.pusher.com/4.2/pusher.min.js"></script>
+	<script src="https://unpkg.com/vue"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<style type="text/css">
+		body {
+			width:80%;
+			margin:10% auto;
+			font-family: sans-serif;
+		}
+		textarea {
+			width: 90%;
+			overflow: hidden;
+		}
+		.chat-message {
+			padding: 10px;
+		}
+		.username {
+			font-weight: 800;
+			padding-bottom: 5px;
+		}
+		.username, .time {
+			font-size: 0.8rem;
+		}
+		.message {
+			white-space: pre-wrap;
+		}
+	</style>
+</head>
+<body>
+	<div class="chat-box" id="app">
+		<input type="text" placeholder="your name" v-model="username">
+		<hr>
+		<div class="chat-lists">
+			<div class="chat-message" v-for="chat in chats" v-bind:data-id="chat.id">
+				<div class="username">
+					{{ chat.username }}
+					<span class="time"> {{ chat.time }} </span>
+				</div>
+				<div class="message"> {{ chat.message }} </div>
+			</div>
+		</div>
+		<div class="chat-input">
+			<textarea name="name" rows="8" v-model="chatInput" @keydown="sendMessage" placeholder="shift+enter untuk jarak, enter untuk submit"></textarea>
+		</div>
+	</div>
+	<script src="main.js"></script>
+</body>
+</html>
